@@ -5,8 +5,9 @@ import Map from "./components/Map";
 
 function App() {
   const [showPolygon, setShowPolygon] = useState(false);
+  const [numPolygons, setNumPolygons] = useState(0);
 
-  function handleChange() {
+  function handleChecke() {
     setShowPolygon(!showPolygon);
   }
 
@@ -31,9 +32,13 @@ function App() {
             type="checkbox"
             name="polygon"
             checked={showPolygon}
-            onChange={handleChange}
+            onChange={handleChecke}
           />
         </label>
+        <div>
+          <input type="number" value={numPolygons} />
+          <button>Add Polygon</button>
+        </div>
         <Map polygonFlag={showPolygon}></Map>
       </div>
     </div>
