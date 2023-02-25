@@ -42,7 +42,7 @@ function App() {
           <input type="number" value={numPolygons} onChange={handleAdd} />
           <button>Add Polygon</button>
         </div>
-        <Map polygonFlag={showPolygon} randomPolygons={numPolygons}></Map>
+        <Map polygonFlag={showPolygon} extraPolygons={numPolygons}></Map>
       </div>
     </div>
   );
