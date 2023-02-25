@@ -7,8 +7,11 @@ function App() {
   const [showPolygon, setShowPolygon] = useState(false);
   const [numPolygons, setNumPolygons] = useState(0);
 
-  function handleChecke() {
+  function handleCheck() {
     setShowPolygon(!showPolygon);
+  }
+  function handleAdd(e) {
+    setNumPolygons(parseInt(e.target.value));
   }
 
   return (
@@ -32,14 +35,14 @@ function App() {
             type="checkbox"
             name="polygon"
             checked={showPolygon}
-            onChange={handleChecke}
+            onChange={handleCheck}
           />
         </label>
         <div>
-          <input type="number" value={numPolygons} />
+          <input type="number" value={numPolygons} onChange={handleAdd} />
           <button>Add Polygon</button>
         </div>
-        <Map polygonFlag={showPolygon}></Map>
+        <Map polygonFlag={showPolygon} randomPolygons={numPolygons}></Map>
       </div>
     </div>
   );

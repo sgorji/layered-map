@@ -1,7 +1,7 @@
 import React from "react";
 import { MapContainer, TileLayer, Polygon } from "react-leaflet";
 
-function Map({ polygonFlag }) {
+function Map({ polygonFlag, randomPolygons }) {
   const initialPosition = [59.9139, 10.7455]; // [latitude, longitude]
   const initialZoom = 10;
 
