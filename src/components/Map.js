@@ -7,13 +7,18 @@ function Map({ polygonFlag, extraPolygons }) {
   const initialZoom = 10;
 
   function generatePolygons(extraPolygons) {
+    // Calculating the size of a square grid to fit extra polygons
+    const squreSide = Math.ceil(Math.sqrt(extraPolygons));
+
     const newPolygons = [];
     for (let i = 0; i < extraPolygons; i++) {
       const randomCoordinates = [];
-      // Generate random points for the next polygon
+
+      // Generate random points for the next polygon with grid shifts
       for (let j = 0; j < 5; j++) {
-        const latitude = 59.0 + Math.random();
-        const longitude = 11.0 + Math.random();
+        const latitude =
+          59.0 + (Math.floor(i / squreSide) + Math.random()) / squreSide;
+        const longitude = 11.0 + ((i % squreSide) + Math.random()) / squreSide;
         randomCoordinates.push([latitude, longitude]);
       }
       newPolygons.push(randomCoordinates);
