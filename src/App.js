@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import Map from "./components/Map";
 
@@ -17,7 +17,13 @@ function App() {
           Learn React
         </a> */}
       </header>
-      <Map></Map>
+      <div>
+        Polygon
+        <label>
+          <input type="checkbox" />
+        </label>
+        <Map></Map>
+      </div>
     </div>
   );
 }
