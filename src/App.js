@@ -5,13 +5,18 @@ import Map from "./components/Map";
 
 function App() {
   const [showPolygon, setShowPolygon] = useState(false);
+  const [readInput, setReadInput] = useState(0);
   const [numPolygons, setNumPolygons] = useState(0);
 
   function handleCheck() {
     setShowPolygon(!showPolygon);
   }
-  function handleAdd(e) {
-    setNumPolygons(parseInt(e.target.value));
+
+  function getInput(e) {
+    setReadInput(parseInt(e.target.value));
+  }
+  function handleAdd() {
+    setNumPolygons(readInput);
   }
 
   return (
@@ -39,8 +44,8 @@ function App() {
           />
         </label>
         <div>
-          <input type="number" value={numPolygons} onChange={handleAdd} />
-          <button>Add Polygon</button>
+          <input type="number" value={readInput} onChange={getInput} />
+          <button onClick={handleAdd}>Add Polygon</button>
         </div>
         <Map polygonFlag={showPolygon} extraPolygons={numPolygons}></Map>
       </div>
