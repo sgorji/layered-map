@@ -1,6 +1,6 @@
 import React from "react";
 // import { useState } from "react";
-import { MapContainer, TileLayer, Polygon } from "react-leaflet";
+import { MapContainer, TileLayer, Polygon, LayersControl } from "react-leaflet";
 
 function Map({ polygonFlag, extraPolygons }) {
   const initialPosition = [59.9139, 10.7455]; // [latitude, longitude]
@@ -32,8 +32,20 @@ function Map({ polygonFlag, extraPolygons }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {polygonFlag && <Polygon positions={coordinates} />}
-      {<Polygon positions={extraPolygons} />}
+      <LayersControl position="topright">
+        <LayersControl.Overlay
+          name="Specified Polygon"
+          background-color="darkmagenta"
+        >
+          <Polygon positions={coordinates} color={"darkmagenta"} />
+          {/* {polygonFlag && (
+            <Polygon positions={coordinates} color={"darkmagenta"} />
+          )} */}
+        </LayersControl.Overlay>
+        <LayersControl.Overlay name="Extra Polygons" LayersControl="blue">
+          <Polygon positions={extraPolygons} color={"blue"} />
+        </LayersControl.Overlay>
+      </LayersControl>
     </MapContainer>
   );
 }

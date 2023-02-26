@@ -8,8 +8,8 @@ function App() {
   const [readInput, setReadInput] = useState(0);
   // const [numPolygons, setNumPolygons] = useState(0);
   const [extraPolygons, setExtraPolygons] = useState([]);
-  const [showInput, setShowInput] = useState(false);
-  const [points, setPoints] = useState([]);
+  // const [showInput, setShowInput] = useState(false);
+  // const [points, setPoints] = useState([]);
 
   function handleCheck() {
     setShowPolygon(!showPolygon);
@@ -40,26 +40,24 @@ function App() {
   }
 
   function handleAdd() {
-    // setNumPolygons(readInput);
     setExtraPolygons(generatePolygons(readInput));
   }
 
   function handleRemove() {
-    // setNumPolygons(readInput);
     setExtraPolygons([]);
   }
 
-  function handleToggleInput() {
-    setShowInput(!showInput);
-    setPoints([]);
-  }
+  // function handleToggleInput() {
+  //   setShowInput(!showInput);
+  //   setPoints([]);
+  // }
 
-  function handleMapClick(e) {
-    if (points.length < 2) {
-      setPoints([...points, e.latlng]);
-    }
-    console.log(points);
-  }
+  // function handleMapClick(e) {
+  //   if (points.length < 2) {
+  //     setPoints([...points, e.latlng]);
+  //   }
+  //   console.log(points);
+  // }
 
   return (
     <div className="App">
@@ -76,7 +74,7 @@ function App() {
         </a> */}
       </header>
       <div className="input-container">
-        <label>
+        {/* <label>
           Specified Polygon
           <input
             type="checkbox"
@@ -85,7 +83,7 @@ function App() {
             checked={showPolygon}
             onChange={handleCheck}
           />
-        </label>
+        </label> */}
         <div>
           <input
             type="number"
@@ -96,7 +94,7 @@ function App() {
           <button onClick={handleAdd}>Add Polygons</button>
           <button onClick={handleRemove}>Remove Polygons</button>
         </div>
-        <div>
+        {/* <div>
           Two Points Input
           <label>
             <input
@@ -113,14 +111,14 @@ function App() {
               {points.length === 2 && <span> Two points selected.</span>}
             </p>
           )}
-        </div>
+        </div> */}
       </div>
       <div className="map-container">
         <Map
           polygonFlag={showPolygon}
           extraPolygons={extraPolygons}
-          onClick={handleMapClick}
-          points={points}
+          // onClick={handleMapClick}
+          // points={points}
         />
       </div>
     </div>
