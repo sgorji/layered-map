@@ -8,6 +8,8 @@ function App() {
   const [readInput, setReadInput] = useState(0);
   // const [numPolygons, setNumPolygons] = useState(0);
   const [extraPolygons, setExtraPolygons] = useState([]);
+  const [showInput, setShowInput] = useState(false);
+  const [points, setPoints] = useState([]);
 
   function handleCheck() {
     setShowPolygon(!showPolygon);
@@ -47,6 +49,18 @@ function App() {
     setExtraPolygons([]);
   }
 
+  function handleToggleInput() {
+    setShowInput(!showInput);
+    setPoints([]);
+  }
+
+  function handleMapClick(e) {
+    if (points.length < 2) {
+      setPoints([...points, e.latlng]);
+    }
+    console.log(points);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -82,9 +96,32 @@ function App() {
           <button onClick={handleAdd}>Add Polygons</button>
           <button onClick={handleRemove}>Remove Polygons</button>
         </div>
+        <div>
+          Two Points Input
+          <label>
+            <input
+              type="checkbox"
+              name="points"
+              checked={showInput}
+              onChange={handleToggleInput}
+            />
+          </label>
+          {showInput && (
+            <p>
+              Click on the map to choose two points.
+              {points.length === 1 && <span> First point selected.</span>}
+              {points.length === 2 && <span> Two points selected.</span>}
+            </p>
+          )}
+        </div>
       </div>
       <div className="map-container">
-        <Map polygonFlag={showPolygon} extraPolygons={extraPolygons} />
+        <Map
+          polygonFlag={showPolygon}
+          extraPolygons={extraPolygons}
+          onClick={handleMapClick}
+          points={points}
+        />
       </div>
     </div>
   );
