@@ -42,6 +42,11 @@ function App() {
     setExtraPolygons(generatePolygons(readInput));
   }
 
+  function handleRemove() {
+    // setNumPolygons(readInput);
+    setExtraPolygons([]);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -68,7 +73,8 @@ function App() {
         </label>
         <div>
           <input type="number" value={readInput} onChange={getInput} />
-          <button onClick={handleAdd}>Add Polygon</button>
+          <button onClick={handleAdd}>Add Polygons</button>
+          <button onClick={handleRemove}>Remove Polygons</button>
         </div>
         <Map polygonFlag={showPolygon} extraPolygons={extraPolygons}></Map>
       </div>
