@@ -61,22 +61,30 @@ function App() {
           Learn React
         </a> */}
       </header>
-      <div>
-        Polygon
+      <div className="input-container">
         <label>
+          Specified Polygon
           <input
             type="checkbox"
+            className="largeCheckbox"
             name="polygon"
             checked={showPolygon}
             onChange={handleCheck}
           />
         </label>
         <div>
-          <input type="number" value={readInput} onChange={getInput} />
+          <input
+            type="number"
+            className="numberField"
+            value={readInput}
+            onChange={getInput}
+          />
           <button onClick={handleAdd}>Add Polygons</button>
           <button onClick={handleRemove}>Remove Polygons</button>
         </div>
-        <Map polygonFlag={showPolygon} extraPolygons={extraPolygons}></Map>
+      </div>
+      <div className="map-container">
+        <Map polygonFlag={showPolygon} extraPolygons={extraPolygons} />
       </div>
     </div>
   );
