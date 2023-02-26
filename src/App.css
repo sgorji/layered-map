@@ -53,7 +53,7 @@
 .input-container {
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
+  height: calc(5vh + 10px);
   align-items: center;
   justify-content: space-evenly;
   /* margin-right: 10%; */
@@ -120,8 +120,8 @@ input.numberField {
   flex-grow: 1;
   /* position: relative; */
   /* height: calc(100vh - 240px); */
-  height: 50vh;
-  width: 80%;
+  height: 75vh;
+  width: 90%;
   /* height: 500px; */
   /* box-sizing: border-box; */
   margin: auto;

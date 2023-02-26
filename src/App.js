@@ -12,9 +12,9 @@ function App() {
   // const [points, setPoints] = useState([]);
   const mapCenter = [59.9139, 10.7455];
 
-  function handleCheck() {
-    setShowPolygon(!showPolygon);
-  }
+  // function handleCheck() {
+  //   setShowPolygon(!showPolygon);
+  // }
 
   function getInput(e) {
     setReadInput(parseInt(e.target.value));
