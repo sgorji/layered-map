@@ -2,8 +2,8 @@ import React from "react";
 // import { useState } from "react";
 import { MapContainer, TileLayer, Polygon, LayersControl } from "react-leaflet";
 
-function Map({ polygonFlag, extraPolygons }) {
-  const initialPosition = [59.9139, 10.7455]; // [latitude, longitude]
+function Map({ polygonFlag, extraPolygons, initialPosition }) {
+  // const initialPosition = [59.9139, 10.7455]; // [latitude, longitude]
   const initialZoom = 10;
 
   // Coordinatas for the specified polygon

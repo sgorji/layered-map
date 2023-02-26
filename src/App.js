@@ -10,6 +10,7 @@ function App() {
   const [extraPolygons, setExtraPolygons] = useState([]);
   // const [showInput, setShowInput] = useState(false);
   // const [points, setPoints] = useState([]);
+  const mapCenter = [59.9139, 10.7455];
 
   function handleCheck() {
     setShowPolygon(!showPolygon);
@@ -22,19 +23,31 @@ function App() {
   function generatePolygons(polygonCount) {
     // Calculating the size of a square grid to fit extra polygons
     const squreSide = Math.ceil(Math.sqrt(polygonCount));
+    const step = 0.0005;
+    const shrink = 0.7;
 
     const newPolygons = [];
     for (let i = 0; i < polygonCount; i++) {
-      const randomCoordinates = [];
+      const nextCoordinates = [];
 
-      // Generate random points for the next polygon with grid shifts
-      for (let j = 0; j < 5; j++) {
+      // Generate the next polygon
+      // for (let j = 0; j < 5; j++) {
+      //   const latitude =
+      //     59.0 + (Math.floor(i / squreSide) + Math.random()) / squreSide;
+      //   const longitude = 11.0 + ((i % squreSide) + Math.random()) / squreSide;
+      //   nextCoordinates.push([latitude, longitude]);
+      // }
+
+      for (const j of [0, 1, 3, 2]) {
         const latitude =
-          59.0 + (Math.floor(i / squreSide) + Math.random()) / squreSide;
-        const longitude = 11.0 + ((i % squreSide) + Math.random()) / squreSide;
-        randomCoordinates.push([latitude, longitude]);
+          mapCenter[0] +
+          step * (Math.floor(i / squreSide) + Math.floor(j / 2) * shrink);
+        const longitude =
+          mapCenter[1] + step * ((i % squreSide) + (j % 2) * shrink);
+        nextCoordinates.push([latitude, longitude]);
       }
-      newPolygons.push(randomCoordinates);
+
+      newPolygons.push(nextCoordinates);
     }
     return newPolygons;
   }
@@ -117,6 +130,7 @@ function App() {
         <Map
           polygonFlag={showPolygon}
           extraPolygons={extraPolygons}
+          initialPosition={mapCenter}
           // onClick={handleMapClick}
           // points={points}
         />
